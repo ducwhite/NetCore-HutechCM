@@ -1,0 +1,64 @@
+﻿@model ClubManagement.Models.Clubs
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+
+<div class="container-xxl py-5 bg-dark page-header mb-5">
+    <div class="container my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Chi tiết CLB</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb text-uppercase">
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="#">CLB</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Chi tiết CLB</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Job Detail Start -->
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row gy-5 gx-4">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center mb-5">
+                    <img class="flex-shrink-0 img-fluid" src="https://cdn.haitrieu.com/wp-content/uploads/2021/09/Logo-DH-CONG-NGHE-THANH-PHO-HO-CHI-MINH-HUTECH.png" alt="" style="width: 80px; height: 80px;">
+                    <div class="text-start ps-4">
+                        <h3 class="mb-3">@Html.DisplayFor(model => model.Name)</h3>
+                        <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>@Html.DisplayFor(model => model.Locations.Name)</span>
+                        <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>@Html.DisplayFor(model => model.Time)</span>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <h4 class="mb-3">Mô tả</h4>
+                    <p>@Html.DisplayFor(model => model.Description)</p>
+                    <h4 class="mb-3">Yêu cầu</h4>
+                    <p>@Html.DisplayFor(model => model.Require)</p>
+                    <h4 class="mb-3">Khác</h4>
+                    <p>@Html.DisplayFor(model => model.ClubDetails)</p>
+                </div>
+
+
+                
+            </div>
+
+            <div class="col-lg-4">
+                <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                    <h4 class="mb-4">Tóm tắt</h4>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Ngày tạo: @Html.DisplayFor(model => model.CreateAt)</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Địa điểm: @Html.DisplayFor(model => model.Locations.Name)</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Thời gian: @Html.DisplayFor(model => model.Time)</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Người tạo: @Html.DisplayFor(model => model.Managers.FullName)</p>
+                </div>
+                <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
+                    <h4 class="mb-4">Chi tiết CLB</h4>
+                    <p class="m-0">@Html.DisplayFor(model => model.ClubDetails)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

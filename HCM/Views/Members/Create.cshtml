@@ -1,0 +1,81 @@
+﻿@model ClubManagement.Models.Members
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+<div class="container-xxl py-5 bg-dark page-header mb-5">
+    <div class="container my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Yêu cầu tham gia CLB</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb text-uppercase">
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="#">CLB</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Yêu cầu</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Job Detail Start -->
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row gy-5 gx-4">
+            <div class="col-lg-8">
+
+                <div class="">
+                    <h4 class="mb-4">Gửi yêu cầu tham gia CLB</h4>
+                    <form asp-action="Create">
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-6">
+                                <input asp-for="FullName" type="text" class="form-control" placeholder="Họ tên">
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input asp-for="StudentNumber" type="text" class="form-control" placeholder="MSSV">
+                                <span asp-validation-for="StudentNumber" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input asp-for="Password" type="text" class="form-control" placeholder="Mật khẩu">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input asp-for="Email" type="email" class="form-control" placeholder="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input asp-for="PhoneNumber" type="text" class="form-control" placeholder="SĐT">
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <select asp-for="ClubId" class="form-control" asp-items="ViewBag.ClubId"></select>
+                            </div>
+                            <div class="col-12">
+                                <textarea asp-for="Description" class="form-control" rows="5" placeholder="Desciption"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="col-12">
+                                <input type="submit" value="Gửi yêu cầu" class="btn btn-primary  w-100" />
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                    <h4 class="mb-4">Thông tin</h4>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>HUTECH - Đại học Công nghệ Tp.HCM</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>475A Điện Biên Phủ, P. 25, Q. Bình Thạnh</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>028 5445 7777</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>HUTECH Club Management</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Software Engineering</p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

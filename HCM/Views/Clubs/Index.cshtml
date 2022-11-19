@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ClubManagement.Models.Clubs>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+<div class="container-xxl py-5 bg-dark page-header mb-5" style="background: linear-gradient(rgba(43, 57, 64, .5), rgba(43, 57, 64, .5)), url(https://media-cdn-v2.laodong.vn/storage/newsportal/2022/9/12/1091965/Dh-Cong-Nghe-Hutech.jpg) center center repeat ">
+    <div class="container my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Câu lạc bộ</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb text-uppercase">
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="#">CLB</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Danh sách CLB</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Jobs Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Danh sách CLB</h1>
+        <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
+            <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
+                @foreach (var item in ViewBag.ListByLocation)
+                {
+                    <li class="nav-item">
+                        <p class="d-flex align-items-center text-start mx-3 ms-0 pb-3" data-bs-toggle="pill" href="#tab-1">
+                            @Html.ActionLink((string)item.Name, "Index", "Clubs", new { id = item.Id }, new { style = "text-decoration: none; font-weight: bold; color: black" })
+                            @*<a style="text-decoration: none; font-weight: bold; color: black" href="@Url.Action( * "Index", "Clubs", new { id = item.Id })"></a>*@
+                        </p>
+                    </li>
+                }
+
+                
+            </ul>
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane fade show p-0 active">
+                    @foreach (var item in Model)
+                    {
+                        <div class="job-item p-4 mb-4">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid" src="https://cdn.haitrieu.com/wp-content/uploads/2021/09/Logo-DH-CONG-NGHE-THANH-PHO-HO-CHI-MINH-HUTECH.png" alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">@Html.DisplayFor(modelItem => item.Name)</h5>
+                                        <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>@Html.DisplayFor(modelItem => item.Locations.Name)</span>
+                                        <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>@Html.DisplayFor(modelItem => item.Time)</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Tham gia</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Ngày tạo: @Html.DisplayFor(modelItem => item.CreateAt)</small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+
+                    <a class="btn btn-primary py-3 px-5" href="">Xem thêm CLB</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
